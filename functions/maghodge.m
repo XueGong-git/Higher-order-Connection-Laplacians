@@ -1,4 +1,4 @@
-function [V,D, Phi] = magHodge(Omega,g)
+function [V,D, Phi] = maghodge(Omega,g)
 %G plot the nodes against the eigenvalue
 %eig is the top eigenvalue
 %Phi are the phases corresponding to the top eigenvector
