@@ -13,10 +13,10 @@ function [V,D, Phi] = maghodge(Omega,g)
     [V,D] = eigs(Lg,size(Ws,1),'smallestabs'); % All eigenvectors ranging from smallest eigenvalue to largest eigenvalue
     D = diag(D);
     Phi = angle(V); %phases corresponding to all eigenvectors
-    G.Nodes.phase0 = mod(Phi(:,1), 2*pi);%phases corresponding to the top eigenvector
-    G.Nodes.phase1 = mod(Phi(:,2), 2*pi);
+    %G.Nodes.phase0 = mod(Phi(:,1), 2*pi);%phases corresponding to the top eigenvector
+    %G.Nodes.phase1 = mod(Phi(:,2), 2*pi);
     %if (g==0)
     %  G.Nodes.phase0 = V(:,2);%phases corresponding to the second smallest eigenvector
     %end
-    eig = round(D(1,1),4); %top eigenvalue
+    %eig = round(D(1,1),4); %top eigenvalue
 end
