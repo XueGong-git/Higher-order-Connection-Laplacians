@@ -12,7 +12,7 @@ trg_name = [123]'; trg_name = num2str(trg_name); trg_label = cellstr(trg_name);
 B1 = [0 1 -1; -1 0 1; 1 -1 0];
 
 %%% B2
-B2 = [1; -1; 1];
+B2 = [1; 1; 1];
 
 %% Undirected Version
 
@@ -43,6 +43,22 @@ L0Mu = B1M*B1M';
 L1Md = B1M' * B1M;
 L1Mu = B2M * B2M';
 
+% 0-up Laplacian
+[V, D] = eig(L0Mu); % zero eigenvalues find connected components of edges through shared triangles
+D
+angle(V)/(pi*g)
+
+% 1-down Magnetic Laplacian
+[V, D] = eig(L1Md); % zero eigenvalues find connected components of edges through shared nodes
+D
+angle(V)/(pi*g)
+
+% 1-up Magnetic Laplacian
+[V, D] = eig(L1Mu); % zero eigenvalues find connected components of edges through shared triangles
+D
+angle(V)/(pi*g)
+
+%{
 % 0-up Laplacian
 [V,D] = eig(L0Mu); % zero eigenvalues find connected components of edges through shared triangles
 Psi = angle(V);s = 100.* ones(size(Psi(:,1)));
@@ -126,6 +142,7 @@ ax = gca;
 exportgraphics(ax,'plots/triangle_v3_L1M.eps','Resolution',300)  
 
 %% Second version Ginestra's notes Section III
+%{
 delta = 2*pi*g;
 I2 = ones(2);
 
@@ -167,6 +184,7 @@ exportgraphics(ax,'plots/triangle_v3.jpg','Resolution',300)
 
 %% Third version -- only consider direction of triangle, treat edges as undirected
 %solve the eigenvalues
+
 phase = meigenmaps(A1,g);
 scatter(cos(phase),sin(phase))
 set(gca,'XLim',[-1.1 1.1],'YLim',[-1.1 1.1])
@@ -177,3 +195,4 @@ set(gca,'fontsize',20);
 plt.LineWidth = 2;
 ax = gca;
 exportgraphics(ax,'plots/triangle_v3.jpg','Resolution',300) 
+%}

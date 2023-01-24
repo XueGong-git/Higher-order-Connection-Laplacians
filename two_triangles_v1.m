@@ -174,53 +174,6 @@ plt.LineWidth = 2;
 ax = gca;
 exportgraphics(ax,'plots/two_triangles_v1_L1Mu.eps','Resolution',300) 
 
-theta = [0, 0, 0, -4*pi/3, 4*pi/3]';
-phi = exp(i*theta);
-
-phi'*L1Mu*phi
-
-scatter(cos(Psi(:,2)),sin(Psi(:,2)), s, 'filled')
-set(gca,'XLim',[-1.1 1.1],'YLim',[-1.1 1.1])
-name = [12 31 23 24 43 45 64 65]'; name = num2str(name); label = cellstr(name);
-xlabel('cos(\theta)');
-ylabel('sin(\theta)');
-dx = -0.05+0.3*rand(n_edge,1); dy = -0.05+0.3*rand(n_edge,1);% displacement so the text does not overlay the data points
-text(cos(Psi(:,2))+dx, sin(Psi(:,2))+dy, edge_label, 'FontSize', 20);
-set(gca,'fontsize',20);
-plt.LineWidth = 2;
-ax = gca;
-shg
-
-
-scatter(cos(Psi(:,3)),sin(Psi(:,3)), s, 'filled')
-set(gca,'XLim',[-1.1 1.1],'YLim',[-1.1 1.1])
-name = [12 31 23 24 43 45 64 65]'; name = num2str(name); label = cellstr(name);
-xlabel('cos(\theta)');
-ylabel('sin(\theta)');
-dx = -0.05+0.3*rand(n_edge,1); dy = -0.05+0.3*rand(n_edge,1);% displacement so the text does not overlay the data points
-text(cos(Psi(:,3))+dx, sin(Psi(:,3))+dy, edge_label, 'FontSize', 20);
-set(gca,'fontsize',20);
-plt.LineWidth = 2;
-ax = gca;
-shg
-
-% plot top 2 eigenvectors
-psi1 = Psi(:, 1)';
-azi = Psi(:, 1)'; %azimuth for the spherical coordinates
-ele = Psi(:, 2)'; % elevation for the sperical coordinates
-[x,y,z] = sph2cart(azi,ele,1);
-scatter3(x,y,z, s, 'filled')
-xlabel('x');
-ylabel('y');
-zlabel('z');
-set(gca,'XLim',[-1.1 1.1],'YLim',[-1.1 1.1],'ZLim',[-1.1 1.1])
-name = [12 31 23 42 34 45 64 65]'; name = num2str(name); label = cellstr(name);
-dx = -0.05+0.3*rand(n_edge,1); dy = -0.05+0.3*rand(n_edge,1); dz = -0.05+0.3*rand(n_edge,1);% displacement so the text does not overlay the data points
-text(x+dx', y+dy', z+dz', edge_label, 'FontSize', 20);
-set(gca,'fontsize',20);
-plt.LineWidth = 2;
-ax = gca;
-exportgraphics(ax,'plots/two_triangles_v1_L1Mu.eps','Resolution',300) 
 
 % 1 Laplacian
 [V1M,D1M] = eig(L1Mu + L1Md); % zero eigenvalues find connected components of edges through shared triangles
