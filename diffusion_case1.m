@@ -85,6 +85,10 @@ xtu = zeros(6, max_step); xtd = zeros(6, max_step); xtl = zeros(6, max_step);
         
     end
 
+colors = [0 0.4470 0.7410;  % Blue
+0.8500 0.3250 0.0980;  % Red
+0.9290 0.6940 0.1250]; % Yellow
+
 
 %end
 
@@ -107,6 +111,7 @@ plot(time_step, atan(norm_xtu([2,4,6], :)./norm_xtu([1,3,5], :)), 'LineStyle', '
 hold off
 title('Up', 'Interpreter', 'latex');
 xlim([0, max_time])
+xticks(0:1:max_time);
 xlabel('t', 'Interpreter', 'latex')
 %legend('\theta_1','\psi_1','\phi_1','\theta_2','\psi_2', '\phi_2','\theta_3','\psi_3','\phi_3')
 set(gca, 'FontSize', 14);
@@ -116,6 +121,7 @@ lines = ax.Children; % Get all lines in the axes
 set(lines, 'LineWidth', 1.5); % Set line width to 2 for all lines
 
 axis square; % makes the plot square
+ax.ColorOrder = colors;
 
 subplot(1,3,2);
 plot(time_step, angle(xtd(1,:)))
@@ -133,6 +139,7 @@ plot(time_step, atan(norm_xtd([2,4,6], :)./norm_xtd([1,3,5], :)), 'LineStyle', '
 hold off
 title('Down', 'Interpreter', 'latex');
 xlim([0, max_time])
+xticks([0 1 2 3]);
 xlabel('t', 'Interpreter', 'latex')
 %legend('\theta_1','\psi_1','\phi_1','\theta_2','\psi_2', '\phi_2','\theta_3','\psi_3','\phi_3')
 set(gca, 'FontSize', 14);
@@ -141,6 +148,7 @@ lines = ax.Children; % Get all lines in the axes
 set(lines, 'LineWidth', 1.5); % Set line width to 2 for all lines
 
 axis square; % makes the plot square
+ax.ColorOrder = colors;
 
 
 subplot(1,3,3);
@@ -158,6 +166,7 @@ plot(time_step, atan(norm_xtl([2,4,6], :)./norm_xtl([1,3,5], :)), 'LineStyle', '
 hold off
 title('Up + Down', 'Interpreter', 'latex');
 xlim([0, max_time])
+xticks([0 1 2 3]);
 
 xlabel('t', 'Interpreter', 'latex')
 %ylim([-1 1])
@@ -167,8 +176,12 @@ set(gca, 'FontSize', 14);
 ax = gca; % Get handle to current axes
 lines = ax.Children; % Get all lines in the axes
 set(lines, 'LineWidth', 1.5); % Set line width to 2 for all lines
+xticks([0 1 2 3]);
 
 axis square; % makes the plot square
+
+% Set the color order for the current axes
+ax.ColorOrder = colors;
 
 saveas(gcf, 'plots\triangle_2_diffusion_0.6pi.eps', 'epsc');
 

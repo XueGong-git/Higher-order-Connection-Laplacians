@@ -78,7 +78,7 @@ lambda_down=sort(eig((Ldown)));
 [UL, DL] = eig(Lup + Ldown);
 
 
-max_step = 750; steps =  1:max_step; step_size = 1/75;
+max_step = 250; steps =  1:max_step; step_size = 1/50;
 time_step = steps*step_size;
 xtu = zeros(6, max_step); xtd = zeros(6, max_step); xtl = zeros(6, max_step); 
  

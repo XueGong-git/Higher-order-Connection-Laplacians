@@ -36,7 +36,7 @@ i1 = 1*i;
 x_grid = (2*pi/100) * linspace(1,100);
 
 
-delta=0.5*pi;
+delta=1.5*pi;
 
 Lup(1,:)=[2, 0,                 0, i1*exp(i1*delta),   exp(-i1*delta), 0];
 Lup(2,:)=[0, 2,                 -i1*exp(i1*delta), 0,    0, exp(-i1*delta)];
@@ -64,7 +64,7 @@ lambda_down=sort(eig((Ldown)));
 [UL, DL] = eig(Lup + Ldown);
 
 
-max_step = 500; steps =  1:max_step; step_size = 1/75;
+max_step = 250; steps =  1:max_step; step_size = 1/50;
 time_step = steps*step_size;
 xtu = zeros(6, max_step); xtd = zeros(6, max_step); xtl = zeros(6, max_step); 
  
@@ -149,5 +149,5 @@ Ml = [angle(xtl([1, 3, 5, 2, 4, 6],:)); psi_l];
 
 createfigure(time_step, Mu, Md, Ml)
 
-saveas(gcf, 'plots\triangle_3_diffusion_0.5pi.eps', 'epsc');
+saveas(gcf, 'plots\triangle_3_diffusion_1.5pi.eps', 'epsc');
 
