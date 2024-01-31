@@ -27,15 +27,15 @@ ldown = [3 21 10 1 25 12;
 i1 = 1i;
 sx = [0 1; 1 0]; sy = [0 -1i; 1i 0]; sz = [1 0; 0 -1];
 
-max_step = 6;
+max_step = 180;
 x_grid = (2*pi/max_step) * linspace(1,max_step, max_step);
 %L1_up_square = zeros(27, 27); L1_down_square = zeros(27, 27);
 
 for n=1:max_step
 
 coef = 1/3;
-delta = coef*pi;    
-%delta=2*pi*n/max_step;
+%delta = coef*pi;    
+delta=2*pi*n/max_step;
 
     
 L1_up_square = zeros(54, 54); L1_down_square = zeros(54, 54);

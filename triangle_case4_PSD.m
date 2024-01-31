@@ -83,7 +83,7 @@ plot(x_grid, lambda_up(:,4))
 plot(x_grid, lambda_up(:,5))
 plot(x_grid, lambda_up(:,6))
 hold off
-title('Spectrum of L_{[1]}^{M, up}');
+title('Spectrum of $L_{1}^{c, up}$', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
 xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 ylim([-1.1 3.1])
@@ -99,7 +99,7 @@ plot(x_grid, lambda_down(:,4))
 plot(x_grid, lambda_down(:,5))
 plot(x_grid, lambda_down(:,6))
 hold off
-title('Spectrum of L_{[1]}^{M, down}');
+title('Spectrum of $L_{1}^{c, down}$', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
 xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 ylim([-0.1 4.1])
@@ -115,7 +115,7 @@ plot(x_grid, lambda_L(:,4))
 plot(x_grid, lambda_L(:,5))
 plot(x_grid, lambda_L(:,6))
 hold off
-title('Spectrum of L_{[1]}^{M}');
+title('Spectrum of $L_{1}^{c}$', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
 xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 % Add a label to the x-axis
@@ -124,10 +124,17 @@ xlabel('\delta')
 
 subplot(2,2,4);
 plot(x_grid, commutator)
-title('Commutator');
+title('Commutator', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
 xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 ylim([-17 1])
 % Add a label to the x-axis
 xlabel('\delta')
-saveas(gcf, 'plots\case4_PSD.eps', 'epsc');
+
+lines = findall(gcf, 'Type', 'line');
+% Loop through each line and set color to blue
+for i = 1:numel(lines)
+    lines(i).Color =  [0, 0.4470, 0.7410];
+end
+
+saveas(gcf, 'plots\case4.eps', 'epsc');

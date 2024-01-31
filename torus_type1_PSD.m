@@ -28,15 +28,15 @@ i1 = 1i;
 sx = [0 1; 1 0]; sy = [0 -1i; 1i 0]; sz = [1 0; 0 -1];
 
 
-max_step = 6;
+max_step = 180;
 x_grid = (2*pi/max_step) * linspace(1,max_step, max_step);
 %L1_up_square = zeros(27, 27); L1_down_square = zeros(27, 27);
 
 for n=1:max_step
 
-%delta=2*pi*n/max_step;
+delta=2*pi*n/max_step;
 coef = 1/3;
-delta = coef*pi;
+%delta = coef*pi;
     
 L1_up_square = zeros(27, 27); L1_down_square = zeros(54, 54);
 
@@ -258,7 +258,7 @@ end
 hold off
 title('Spectrum of $L^{c, up}$', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
-xticklabels({'$0$', '$\pi/2$', '$\pi$', '$3\pi/2$', '$2\pi$'})
+xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 ylim([-0.5 8.5])
 % Add a label to the x-axis
 xlabel('\delta')
@@ -272,7 +272,7 @@ end
 hold off
 title('Spectrum of $L^{c, down}$', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
-xticklabels({'$0$', '$\pi/2$', '$\pi$', '$3\pi/2$', '$2\pi$'})
+xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 %ylim([0 15])
 
 % Add a label to the x-axis
@@ -287,7 +287,7 @@ end
 hold off
 title('Spectrum of $L^{c}$', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
-xticklabels({'$0$', '$\pi/2$', '$\pi$', '$3\pi/2$', '$2\pi$'})
+xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 ylim([8 20])
 
 % Add a label to the x-axis
@@ -298,7 +298,7 @@ subplot(2,2,4);
 plot(x_grid, anti_commutator)
 title('Commutator', 'Interpreter', 'latex');
 xticks([0 pi/2 pi 3*pi/2 2*pi])
-xticklabels({'$0$', '$\pi/2$', '$\pi$', '$3\pi/2$', '$2\pi$'})
+xticklabels({'0', '\pi/2', '\pi', '3\pi/2', '2\pi'})
 % Add a label to the x-axis
 xlabel('\delta')
 %ylim([-1 1])
