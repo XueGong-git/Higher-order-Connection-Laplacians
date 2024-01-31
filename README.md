@@ -1,4 +1,4 @@
-# MagneticHodgeLaplacian
+# Higher-order Connection Laplacians
 
 This repository contains codes to generates figures and tables presented in the paper "Higher-order Connection Laplacians for Directed
 Simplicial Complexes" by Xue Gong, Desmond J. Higham, Konstantinos Zygalakis, and Ginestra Bianconi.
